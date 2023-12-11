@@ -8,4 +8,4 @@
 
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Tigren_PWATask', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Tigren_PwaTask', __DIR__);

@@ -6,7 +6,7 @@
  *
  */
 
-namespace Tigren\PWATask\Setup\Patch\Data;
+namespace Tigren\PwaTask\Setup\Patch\Data;
 
 use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;

@@ -1,0 +1,13 @@
+interface ProductInterface @typeResolver(class: "Magento\\CatalogGraphQl\\Model\\ProductInterfaceTypeResolverComposite") @doc(description: "The ProductInterface contains attributes that are common to all types of products. Note that descriptions may not be available for custom and EAV attributes.") {
+    show_on_pwa: Int
+    @resolver(class: "Tigren\\PwaTask\\Model\\Resolver\\Product\\ShowOnPwaAttribute")
+    @doc(description: "Show on PWA")
+}
+
+input ProductAttributeFilterInput @doc(description: "Defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.")  {
+    show_on_pwa: FilterEqualTypeInput @doc(description: "Filter by the show_on_pwa attribute")
+}
+
+input ProductFilterInput @doc(description: "The ProductFilterInput type defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
+    show_on_pwa: FilterTypeInput @doc(description: "Filter by the show_on_pwa attribute")
+}
