@@ -11,3 +11,13 @@ input ProductAttributeFilterInput @doc(description: "Defines the filters to be u
 input ProductFilterInput @doc(description: "The ProductFilterInput type defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
     show_on_pwa: FilterTypeInput @doc(description: "Filter by the show_on_pwa attribute")
 }
+
+type Customer @doc(description: "The Customer object contains information about a registered customer.") {
+    department: String @doc(description: "The customer's department")
+    @resolver(class: "Tigren\\PwaTask\\Model\\Resolver\\Customer\\DepartmentAttribute")
+    @doc(description: "Department")
+}
+
+input CustomerInput @doc(description: "An input object that assigns or updates customer attributes.") {
+    department: String @doc(description: "The customer's department")
+}

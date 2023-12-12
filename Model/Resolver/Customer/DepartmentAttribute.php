@@ -6,25 +6,24 @@
  *
  */
 
-namespace Tigren\PwaTask\Model\Resolver\Product;
+namespace Tigren\PwaTask\Model\Resolver\Customer;
 
-use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 
-class ShowOnPwaAttribute implements ResolverInterface
+class DepartmentAttribute implements ResolverInterface
 {
 
-    protected $productRepositoryInterface;
+    protected $customerRepositoryInterface;
 
     public function __construct(
-        ProductRepositoryInterface $productRepositoryInterface
+        CustomerRepositoryInterface $customerRepositoryInterface
     )
     {
-        $this->productRepositoryInterface = $productRepositoryInterface;
+        $this->customerRepositoryInterface = $customerRepositoryInterface;
     }
 
     /**
@@ -40,11 +39,15 @@ class ShowOnPwaAttribute implements ResolverInterface
         if (!isset($value['model'])) {
             throw new LocalizedException(__('"model" value should be specified'));
         }
-        
-        /** @var ProductInterface $productModel */
-        $productModel = $value['model'];
-        $productId = $productModel->getId();
-        $productData = $this->productRepositoryInterface->getById($productId);
-        return $productData->getCustomAttribute('show_on_pwa')->getValue();
+
+        $customerModel = $value['model'];
+        $customerId = $customerModel->getId();
+        $customerData = $this->customerRepositoryInterface->getById($customerId);
+
+        if ($customerData->getCustomAttribute('department')) {
+            return $customerData->getCustomAttribute('department')->getValue();
+        } else {
+            return null;
+        }
     }
 }

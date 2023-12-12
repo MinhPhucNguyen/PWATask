@@ -8,5 +8,10 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Tigren_PwaTask"/>
+    <module name="Tigren_PwaTask">
+        <sequence>
+            <module name="Magento_Backend"/>
+            <module name="Magento_GraphQl"/>
+        </sequence>
+    </module>
 </config>
