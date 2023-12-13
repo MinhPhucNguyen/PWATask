@@ -40,7 +40,7 @@ class ShowOnPwaAttribute implements ResolverInterface
         if (!isset($value['model'])) {
             throw new LocalizedException(__('"model" value should be specified'));
         }
-        
+
         /** @var ProductInterface $productModel */
         $productModel = $value['model'];
         $productId = $productModel->getId();
