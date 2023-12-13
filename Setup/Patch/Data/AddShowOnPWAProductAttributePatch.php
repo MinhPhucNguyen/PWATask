@@ -66,11 +66,13 @@ class AddShowOnPWAProductAttributePatch implements DataPatchInterface
                 'label' => 'Show On PWA',
                 'source' => null,
                 'type' => 'int',
-                'is_used_in_grid' => false,
+                'is_used_in_grid' => true,
                 'required' => true,
                 'input' => 'boolean',
                 'is_filterable_in_grid' => false,
                 'sort_order' => 10,
+                'use_in_search' => true,
+                'is_visible_in_advanced_search' => true,
                 'group' => 'Product Details',
             ]
         );
